@@ -4,6 +4,7 @@ import (
 	"errors"
 	"gits-test/models/model"
 	"gits-test/models/request"
+	"gits-test/models/response"
 	"time"
 
 	"github.com/google/uuid"
@@ -65,4 +66,13 @@ func (au *AppUsecase) CreateGatheringUsecase(createGatheringRequest request.Crea
 	}
 
 	return nil
+}
+
+func (au *AppUsecase) ListGatheringUsecase() ([]response.ListGatheringResponse, error) {
+	listGathering, err := au.AppRepository.ListGatheringRepository()
+	if err != nil {
+		return listGathering, err
+	}
+
+	return listGathering, nil
 }

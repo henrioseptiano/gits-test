@@ -26,3 +26,18 @@ func (ah *AppHandler) CreateGatheringHandler(c *gin.Context) {
 		"message": "Success",
 	})
 }
+
+func (ah *AppHandler) ListGatheringHandler(c *gin.Context) {
+	listGathering, err := ah.AppUsecase.ListGatheringUsecase()
+	if err != nil {
+		c.JSON(400, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"message": "Success List Gathering",
+		"data":    listGathering,
+	})
+}

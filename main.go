@@ -6,7 +6,6 @@ import (
 	"gits-test/app/handler"
 	"gits-test/app/repository"
 	"gits-test/app/usecase"
-	"gits-test/models/model"
 	"gits-test/routes"
 	"log"
 	"net/http"
@@ -29,7 +28,6 @@ func main() {
 		log.Fatalf("Error when trying to connect DB : %v\n", err)
 		return
 	}
-	db.AutoMigrate(&model.GatheringType{})
 	router := gin.Default()
 	entity := repository.NewAppRepository(db)
 	usecase := usecase.NewAppUsecase(entity)

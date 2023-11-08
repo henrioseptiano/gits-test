@@ -11,5 +11,5 @@ type Gathering struct {
 	Location    string     `json:"location" gorm:"not null"`
 	Status      bool       `json:"status" gorm:"not null"`
 	CreatedAt   time.Time  `json:"created_at" gorm:"not null"`
-	UpdatedAt   *time.Time `json:"updated_at" gorm:"not null"`
+	UpdatedAt   *time.Time `json:"updated_at"`
 }

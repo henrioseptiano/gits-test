@@ -32,9 +32,19 @@ func (r *Router) AppRoutes(ginRouter *gin.Engine) *gin.Engine {
 	{
 		// Member
 		groupRouter.POST("/member", r.Handler.CreateMemberHandler)
+		groupRouter.GET("/member", r.Handler.ListMemberHandler)
 
 		// Gathering
 		groupRouter.POST("/gathering", r.Handler.CreateGatheringHandler)
+		groupRouter.GET("/gathering", r.Handler.ListGatheringHandler)
+
+		// Invitation
+		groupRouter.POST("/invitation", r.Handler.CreateInvitationHandler)
+		groupRouter.PUT("/acceptnotaccept/:invitation_id", r.Handler.AcceptNotAcceptHandler)
+		groupRouter.GET("/invitation", r.Handler.ListInvitationHandler)
+
+		// Attendee
+		groupRouter.GET("/attendee", r.Handler.ListAttendeeHandler)
 	}
 
 	return ginRouter

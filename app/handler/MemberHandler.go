@@ -27,3 +27,19 @@ func (ah *AppHandler) CreateMemberHandler(c *gin.Context) {
 	})
 	return
 }
+
+func (ah *AppHandler) ListMemberHandler(c *gin.Context) {
+	listMemberResponse, err := ah.AppUsecase.ListMemberUsecase()
+	if err != nil {
+		c.JSON(400, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"message": "Success List Data Member",
+		"data":    listMemberResponse,
+	})
+	return
+}

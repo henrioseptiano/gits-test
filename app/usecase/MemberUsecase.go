@@ -2,9 +2,9 @@ package usecase
 
 import (
 	"errors"
-	"fmt"
 	"gits-test/models/model"
 	"gits-test/models/request"
+	"gits-test/models/response"
 	"gits-test/utils"
 
 	"github.com/google/uuid"
@@ -30,8 +30,6 @@ func (au *AppUsecase) CreateMemberUsecase(createMemberRequest request.CreateMemb
 		return err
 	}
 
-	fmt.Println(createMemberRequest.PhoneNumber)
-	fmt.Println(utils.IsValidPhoneNumber(createMemberRequest.PhoneNumber))
 	if !utils.IsValidPhoneNumber(createMemberRequest.PhoneNumber) {
 		return errors.New("Invalid Phone Number format")
 	}
@@ -50,4 +48,13 @@ func (au *AppUsecase) CreateMemberUsecase(createMemberRequest request.CreateMemb
 	}
 
 	return nil
+}
+
+func (au *AppUsecase) ListMemberUsecase() ([]response.ListMemberResponse, error) {
+	listMemberResponse, err := au.AppRepository.ListMemberRepository()
+	if err != nil {
+		return nil, err
+	}
+
+	return listMemberResponse, nil
 }
