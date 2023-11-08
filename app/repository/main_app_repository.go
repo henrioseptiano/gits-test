@@ -1,11 +1,13 @@
 package repository
 
-import "gorm.io/gorm"
+import (
+	"gits-test/app"
+)
 
 type AppRepository struct {
-	DB *gorm.DB
+	DB app.Database
 }
 
-func NewAppRepository(db *gorm.DB) *AppRepository {
+func NewAppRepository(db app.Database) *AppRepository {
 	return &AppRepository{DB: db}
 }

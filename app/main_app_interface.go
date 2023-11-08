@@ -6,6 +6,7 @@ import (
 	"gits-test/models/response"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 type AppHandlerInterface interface {
@@ -59,4 +60,15 @@ type AppRepositoryInterface interface {
 
 	//Update
 	AcceptNotAcceptRepository(model.InvitationStatus) error
+}
+
+type Database interface {
+	Create(interface{}) *gorm.DB
+	Table(string) *gorm.DB
+	Joins(string) *gorm.DB
+	Select(interface{}) *gorm.DB
+	Where(interface{}, ...interface{}) *gorm.DB
+	Find(interface{}) *gorm.DB
+	First(interface{}) *gorm.DB
+	Save(interface{}) *gorm.DB
 }
